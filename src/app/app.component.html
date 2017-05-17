@@ -1,0 +1,35 @@
+<div class="main">
+  <h1>Friends</h1>
+  <div class="additem">
+    <input [(ngModel)]="newItem" placeholer="Add Book" class="addtext">
+    <button (click)="pushItem()">Add</button>
+  </div>
+  <ul>
+    <li *ngFor="let i of books;let ind = index"> {{i | uppercase}} <span (click)="removeItem(ind)">X</span></li>
+  </ul>
+</div>
+
+
+<!--
+<h1>
+  {{title}}
+</h1>
+
+{{myobj.name}}<br>
+<ul>
+  <li *ngFor="let i of books">{{i}}</li>
+</ul>
+<br>
+<a routerLink="/members">Members</a><br>
+<a routerLink="/product">Product</a>
+<br>
+
+<router-outlet></router-outlet>
+
+<p *ngIf="isTrue">IsTrue</p>
+
+
+<p *ngIf="!isTrue; then firstTemplate else secondTemplate">It is true</p>
+
+<ng-template #firstTemplate>This Show if Not True</ng-template>
+<ng-template #secondTemplate>This Show if True</ng-template>-->
