@@ -1,4 +1,4 @@
-<div class="main">
+<!--<div class="main">
   <h1>Friends</h1>
   <div class="additem">
     <input [(ngModel)]="newItem" placeholer="Add Book" class="addtext">
@@ -9,6 +9,8 @@
   </ul>
 </div>
 
+<div class="margint20">
+  </div>-->
 
 <!--
 <h1>
@@ -33,3 +35,19 @@
 
 <ng-template #firstTemplate>This Show if Not True</ng-template>
 <ng-template #secondTemplate>This Show if True</ng-template>-->
+<!--forms-->
+
+<form [formGroup]="form">
+  Decimal : <input type="text" name="decimal" (ngModelChange)="decimalChanged(oldValue,newValue=$event)" placeholder="decimal" formControlName="decimal">
+  <br>
+  <br>
+  Binary : <input type="text" name="binary" (ngModelChange)="binaryChanged(oldValue,newValue=$event)" placeholder="binary" formControlName="binary">
+  <br>
+  <br>
+  Octa : <input type="text" name="octal" (ngModelChange)="octalChanged(oldValue,newValue=$event)" placeholder="octal" formControlName="octal">
+  <br>
+  <br>
+  Hexa : <input type="text" name="hexa" (ngModelChange)="hexaChanged(oldValue,newValue=$event)" placeholder="hexa" formControlName="hexa">
+</form>
+
+<!--forms end-->
