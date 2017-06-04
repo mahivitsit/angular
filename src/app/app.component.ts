@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup,FormControl } from '@angular/forms';
+import { Form,FormGroup,FormControl,Validators } from '@angular/forms';
+import { MyDataService } from './my-data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { FormGroup,FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private newService : MyDataService){}
   title = 'app works!';
   myobj = {id:1,name:"Mahendar"};
   books = ["Head First Java", "CPDS", "Angular 4"];
@@ -29,13 +31,34 @@ export class AppComponent {
     console.log(data);
   };
   form;
+  vform;
+  httpdata;
   ngOnInit(){
   this.form  = new FormGroup({
       decimal : new FormControl(""),
       binary : new FormControl(""),
       octal : new FormControl(""),
       hexa : new FormControl("")
-    })
+    });
+    this.vform = new FormGroup({
+      uname : new FormControl("",Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.pattern('[\\w\\-\\s\\/]+')
+      ])),
+      fname : new FormControl("",this.textValidator)
+    });
+    //console.log(this.newService.success());
+    //console.log(this.newService.obj);
+    this.newService.fetchData();
+    this.newService.fetchJson();
+  };
+  textValidator(control)
+  {
+    if(control.value.length < 3)
+    {
+      return {"lastname" : true};
+    }
   }
   d=0;
   b=0;

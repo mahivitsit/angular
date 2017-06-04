@@ -21,13 +21,13 @@
 <ul>
   <li *ngFor="let i of books">{{i}}</li>
 </ul>
-<br>
+<br> -->
 <a routerLink="/members">Members</a><br>
 <a routerLink="/product">Product</a>
 <br>
 
 <router-outlet></router-outlet>
-
+<!--
 <p *ngIf="isTrue">IsTrue</p>
 
 
@@ -35,7 +35,7 @@
 
 <ng-template #firstTemplate>This Show if Not True</ng-template>
 <ng-template #secondTemplate>This Show if True</ng-template>-->
-<!--forms-->
+<!--form1
 
 <form [formGroup]="form">
   Decimal : <input type="text" name="decimal" (ngModelChange)="decimalChanged(oldValue,newValue=$event)" placeholder="decimal" formControlName="decimal">
@@ -51,3 +51,16 @@
 </form>
 
 <!--forms end-->
+
+<!-- form validation --/>
+
+<form [formGroup]="vform" (ngSubmit)="onSubmit(vform.value)">
+  <input type="text" name="uname" placeholder="User Name" formControlName="uname">
+  <br>
+  <br>
+  <input type="text" name="fname" placeholder="Full Name" formControlName="fname">
+  <br>
+  <br>
+  <input type="submit" [disabled]="!vform.valid" value="Submit">
+</form>
+<!-- form validation end-->

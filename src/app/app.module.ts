@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import  { MyDataService } from './my-data.service';
 import { MyComponentComponent } from './my-component/my-component.component';
 import { ProductComponent } from './product/product.component';
 import { MembersComponent } from './members/members.component';
@@ -33,7 +34,7 @@ import {ReactiveFormsModule} from "@angular/forms";
       }
     ])
   ],
-  providers: [],
+  providers: [MyDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
