@@ -21,7 +21,7 @@
 <ul>
   <li *ngFor="let i of books">{{i}}</li>
 </ul>
-<br> -->
+<br>
 <a routerLink="/members">Members</a><br>
 <a routerLink="/product">Product</a>
 <br>
@@ -64,3 +64,26 @@
   <input type="submit" [disabled]="!vform.valid" value="Submit">
 </form>
 <!-- form validation end-->
+
+<md-toolbar color="primary">
+    <span>Mahendar</span>
+
+    <span class="example-spacer"></span>
+    <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon></button>
+</md-toolbar>
+<md-menu #appMenu="mdMenu">
+    <button md-menu-item> Settings</button>
+    <button md-menu-item> Help</button>
+</md-menu>
+<md-card *ngFor="let data of (myData ? myData.slice(0,10):[]);let i=index">
+    <img md-card-image src="{{data.url}}">
+    <md-card-header>
+        <md-card-title>
+            {{data.title}}
+        </md-card-title>
+    </md-card-header>
+    <md-card-actions>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+    </md-card-actions>
+</md-card>

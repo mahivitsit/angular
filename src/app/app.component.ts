@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Form,FormGroup,FormControl,Validators } from '@angular/forms';
 import { MyDataService } from './my-data.service';
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,13 @@ import { MyDataService } from './my-data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private newService : MyDataService){}
+  myData : Array<any>;
+  constructor(private newService : MyDataService,private myhttp:Http)
+  {
+    this.myhttp.get(newService.jsonplaceholder_photos)
+    .map((response)=>response.json())
+    .subscribe(res => this.myData = res);
+  }
   title = 'app works!';
   myobj = {id:1,name:"Mahendar"};
   books = ["Head First Java", "CPDS", "Angular 4"];
@@ -50,8 +57,10 @@ export class AppComponent {
     });
     //console.log(this.newService.success());
     //console.log(this.newService.obj);
-    this.newService.fetchData();
-    this.newService.fetchJson();
+    //this.newService.fetchData();
+    //this.newService.fetchJson();
+    //this.newService.fetchPhotos();
+    //this.myData = this.newService.myServiceData;
   };
   textValidator(control)
   {
